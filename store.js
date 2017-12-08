@@ -7,7 +7,7 @@ const store_user = {
         verified: false
     },
     mutations:{
-        setUser: function(state, obj){            
+        setUser: function(state, obj){ 
             state.user = obj.user_id;
             state.name = obj.name;
             state.dpic = obj.picture_large;
@@ -153,7 +153,7 @@ const store = new Vuex.Store({
 });
 
 (function(){
-    if(window.localStorage){
+    if(window.localStorage && window.localStorage._tkn){
         store.dispatch("updateUser", window.localStorage);
     }
 })();
