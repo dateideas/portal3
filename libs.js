@@ -4,7 +4,8 @@ var webAuth = new auth0.WebAuth({
     clientID: 'U5LYZTWEZGOIoIwng2byGTSB7KeVFzQK',
     responseType: 'token id_token',
     audience: 'https://ongspxm.auth0.com/userinfo',
-    scope: 'openid'
+    scope: 'openid',
+    redirectUri: window.location.href
 });
 
 function auth0_login(){
