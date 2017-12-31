@@ -16,7 +16,7 @@ function auth0_logout(){
     store.dispatch("clearUser");
     gtag("event", "logout");
     webAuth.logout({
-        returnTo: window.location.origin + window.location.pathname
+        returnTo: window.location.href
     });
 
     router.push("/");
