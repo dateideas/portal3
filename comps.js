@@ -17,6 +17,7 @@ Vue.component("v_display_card", {
         save: function(){ this.$store.dispatch("savePage", this.id); },
         unsave: function(){ this.$store.dispatch("unsavePage", this.id); },
         visitPage: function(){
+           console.log("asdf");
             if(this.loggedIn){ router.push("/page/"+this.id); }
         }
     },

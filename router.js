@@ -4,7 +4,6 @@ function v_redirect(path){
         created: function(){
             if(window.location.hash.startsWith("#/access_token")){
                 auth0_handle();
-
             }
             this.$router.push(path);
         }

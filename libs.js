@@ -15,7 +15,9 @@ function auth0_login(){
 function auth0_logout(){
     store.dispatch("clearUser");
     gtag("event", "logout");
-    webAuth.logout();
+    webAuth.logout({
+        returnTo: window.location.origin + window.location.pathname
+    });
 
     router.push("/");
 }
@@ -23,9 +25,7 @@ function auth0_logout(){
 function auth0_handle(){
     webAuth.parseHash(function(err, authRes){
         if(authRes && authRes.accessToken && authRes.idToken){
-            // write to store
-
-            webAuth.client.userInfo(authRes.accessToken, function(err, prof){ 
+                webAuth.client.userInfo(authRes.accessToken, function(err, prof){ 
                 var authManagement = new auth0.Management({
                     domain: "ongspxm.auth0.com",
                     token: authRes.idToken 
@@ -35,6 +35,8 @@ function auth0_handle(){
                     user["_tkn"] = authRes.idToken;
                     store.dispatch("updateUser", user);
                     gtag("event", "login");
+
+                    router.push("/");
                 });
             });
         }  
