@@ -14,8 +14,14 @@ Vue.component("v_display_card", {
         loggedIn: function(){ return this.$store.getters.loggedIn; }
     },
     methods:{
-        save: function(){ this.$store.dispatch("savePage", this.id); },
-        unsave: function(){ this.$store.dispatch("unsavePage", this.id); },
+        save: function(evt){ 
+            this.$store.dispatch("savePage", this.id); 
+            evt.stopPropagation();
+        },
+        unsave: function(evt){ 
+            this.$store.dispatch("unsavePage", this.id); 
+            evt.stopPropagation();
+        },
         visitPage: function(){
            console.log("asdf");
             if(this.loggedIn){ router.push("/page/"+this.id); }
